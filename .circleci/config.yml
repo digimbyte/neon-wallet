@@ -43,6 +43,8 @@ jobs:
     resource_class: large
     steps:
       - checkout
+      - node/install:
+          node-version: '18.14.2'
       - run: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
       - run: apt-get -y update
       - run: apt-get -y install libusb-1.0-0-dev icnsutils graphicsmagick libudev-dev
@@ -56,11 +58,11 @@ jobs:
 
   build_macos:
     macos:
-      xcode: "14.0.0"
+      xcode: "latest"
     steps:
       - checkout
       - node/install:
-          node-version: '16.19.1'
+          node-version: '18.14.2'
       - run: npm ci --timeout 1500000
       - run: npm run build:mac
       - store_artifacts:
@@ -73,6 +75,8 @@ jobs:
       size: "medium"
     steps:
       - checkout
+      - node/install:
+          node-version: '18.14.2'
       - run: npm install --global --production windows-build-tools --vs2015
       - run: npm config set msvs_version 2015 -g
       - run: choco install windows-sdk-8.1
