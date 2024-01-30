@@ -58,7 +58,7 @@ jobs:
 
   build_macos:
     macos:
-      xcode: 'latest'
+      xcode: "15.2.0"
     steps:
       - checkout
       - node/install:
