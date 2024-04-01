@@ -1,15 +1,15 @@
 import react from '@vitejs/plugin-react'
-import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
+import { bytecodePlugin, defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import { resolve } from 'path'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import svgr from 'vite-plugin-svgr'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin()],
+    plugins: [externalizeDepsPlugin(), bytecodePlugin()],
   },
   preload: {
-    plugins: [externalizeDepsPlugin()],
+    plugins: [externalizeDepsPlugin(), bytecodePlugin()],
   },
   renderer: {
     resolve: {
