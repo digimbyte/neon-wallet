@@ -23,7 +23,7 @@ export const CommonAccountActions = ({ account }: TProps) => {
         colorSchema="neon"
         flat
         clickableProps={{ className: 'text-xs' }}
-        onClick={() => navigate('/receive', { state: { account: account } })}
+        onClick={() => navigate('/app/receive', { state: { account: account } })}
       />
       <Button
         leftIcon={<TbStepOut className="text-neon w-5 h-5" />}
@@ -33,7 +33,7 @@ export const CommonAccountActions = ({ account }: TProps) => {
         flat
         colorSchema="neon"
         clickableProps={{ className: 'text-xs' }}
-        onClick={() => navigate('/send', { state: { account: account } })}
+        onClick={() => navigate('/app/send', { state: { account: account } })}
       />
     </div>
   ) : (

@@ -10,8 +10,8 @@ import { SettingsSidebarLink } from './SettingsSidebarLink'
 export const SettingsPersonalizationTabContent = () => {
   const { t } = useTranslation('pages', { keyPrefix: 'settings' })
 
-  const matchRootNetworkConfiguration = useMatch('settings/personalisation')
-  const matchRootSettings = useMatch('settings')
+  const matchRootNetworkConfiguration = useMatch('app/settings/personalisation')
+  const matchRootSettings = useMatch('app/settings')
 
   return (
     <nav className="flex flex-row justify-between h-15 w-full mb-5 text-[14px]">
@@ -19,28 +19,28 @@ export const SettingsPersonalizationTabContent = () => {
         <SettingsSidebarLink
           title={t('personalisationOption.networkConfiguration')}
           icon={<Tb3DCubeSphere />}
-          to="/settings/personalisation/network-configuration"
+          to="/app/settings/personalisation/network-configuration"
           match={!!matchRootNetworkConfiguration || !!matchRootSettings}
         />
         <SettingsSidebarLink
           title={t('personalisationOption.currency')}
           icon={<BsCash />}
-          to="/settings/personalisation/currency"
+          to="/app/settings/personalisation/currency"
         />
         <SettingsSidebarLink
           title={t('personalisationOption.language')}
           icon={<MdOutlineLanguage />}
-          to="/settings/personalisation/language"
+          to="/app/settings/personalisation/language"
         />
         <SettingsSidebarLink
           title={t('personalisationOption.theme')}
           icon={<RiShapesLine />}
-          to="/settings/personalisation/theme"
+          to="/app/settings/personalisation/theme"
         />
         <SettingsSidebarLink
           title={t('personalisationOption.releaseNotes')}
           icon={<MdOutlineListAlt />}
-          to="/settings/personalisation/release-notes"
+          to="/app/settings/personalisation/release-notes"
         />
       </ul>
     </nav>

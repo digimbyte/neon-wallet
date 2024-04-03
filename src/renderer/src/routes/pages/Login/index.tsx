@@ -38,8 +38,9 @@ export const LoginPage = () => {
   const handleSubmit = async (data: TFormData) => {
     try {
       await login(data.password)
-      navigate(location.state.from ?? '/')
+      navigate(location.state?.from ?? '/app/portfolio/overview')
     } catch (error: any) {
+      console.log(error)
       setError('password', t('invalidPassword'))
     }
   }
@@ -74,6 +75,7 @@ export const LoginPage = () => {
           type="submit"
           disabled={!actionState.isValid || actionState.isActing}
           leftIcon={<LoginIcon />}
+          loading={actionState.isActing}
         />
       </form>
     </WelcomeLayout>

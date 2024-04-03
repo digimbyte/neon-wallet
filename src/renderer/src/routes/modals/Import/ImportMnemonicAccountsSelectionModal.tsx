@@ -69,7 +69,7 @@ export const ImportMnemonicAccountsSelectionModal = () => {
     })
 
     modalNavigate(-2)
-    navigate('/wallets', { state: { wallet } })
+    navigate('/app/wallets', { state: { wallet } })
   }
 
   const { isMounting } = useMount(async () => {

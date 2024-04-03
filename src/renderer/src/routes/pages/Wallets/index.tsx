@@ -36,7 +36,7 @@ export const WalletsPage = () => {
 
   const handleSelectAccount = (selected: IAccountState) => {
     setSelectedAccount(selected)
-    navigate(`/wallets/${selected.address}/overview`)
+    navigate(`/app/wallets/${selected.address}/overview`)
   }
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export const WalletsPage = () => {
   useEffect(() => {
     const firstAccount = accounts.find(account => account.idWallet === selectedWallet?.id)
     setSelectedAccount(firstAccount)
-    if (firstAccount) navigate(`/wallets/${firstAccount.address}/overview`)
+    if (firstAccount) navigate(`/app/wallets/${firstAccount.address}/overview`)
   }, [selectedWallet, accounts, navigate])
 
   return (
@@ -157,22 +157,25 @@ export const WalletsPage = () => {
               <ul className="max-w-[11.625rem] min-w-[11.625rem] w-full border-r border-gray-300/30">
                 <SidebarMenuButton
                   title={t('accountOverview.title')}
-                  to={`/wallets/${selectedAccount.address}/overview`}
+                  to={`/app/wallets/${selectedAccount.address}/overview`}
                 />
                 <SidebarMenuButton
                   title={t('accountTokensList.title')}
-                  to={`/wallets/${selectedAccount.address}/tokens`}
+                  to={`/app/wallets/${selectedAccount.address}/tokens`}
                 />
-                <SidebarMenuButton title={t('accountNftList.title')} to={`/wallets/${selectedAccount.address}/nfts`} />
+                <SidebarMenuButton
+                  title={t('accountNftList.title')}
+                  to={`/app/wallets/${selectedAccount.address}/nfts`}
+                />
                 <SidebarMenuButton
                   title={t('accountTransactionsList.title')}
-                  to={`/wallets/${selectedAccount.address}/transactions`}
+                  to={`/app/wallets/${selectedAccount.address}/transactions`}
                 />
 
                 {selectedAccount?.accountType !== 'watch' && (
                   <SidebarMenuButton
                     title={t('accountConnections.title')}
-                    to={`/wallets/${selectedAccount.address}/connections`}
+                    to={`/app/wallets/${selectedAccount.address}/connections`}
                   />
                 )}
               </ul>

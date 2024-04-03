@@ -5,6 +5,7 @@ import { join } from 'path'
 import icon from '../../resources/icon.png?asset'
 
 import { registerEncryptionHandlers } from './encryption'
+import { registerLedgerHandlers } from './ledger'
 import { setupSentry } from './sentryElectron'
 import { registerWindowHandlers } from './window'
 
@@ -32,6 +33,37 @@ function createWindow(): void {
   mainWindow.webContents.setWindowOpenHandler(details => {
     shell.openExternal(details.url)
     return { action: 'deny' }
+  })
+
+  mainWindow.webContents.session.on('select-hid-device', (event, details, callback) => {
+    // Add events to handle devices being added or removed before the callback on
+    // `select-hid-device` is called.
+    mainWindow.webContents.session.on('hid-device-added', (event, device) => {
+      console.log('hid-device-added FIRED WITH', device)
+      // Optionally update details.deviceList
+    })
+
+    mainWindow.webContents.session.on('hid-device-removed', (event, device) => {
+      console.log('hid-device-removed FIRED WITH', device)
+      // Optionally update details.deviceList
+    })
+
+    event.preventDefault()
+    if (details.deviceList && details.deviceList.length > 0) {
+      callback(details.deviceList[0].deviceId)
+    }
+  })
+
+  mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
+    if (permission === 'hid' && details.securityOrigin === 'file:///') {
+      return true
+    }
+  })
+
+  mainWindow.webContents.session.setDevicePermissionHandler(details => {
+    if (details.deviceType === 'hid' && details.origin === 'file://') {
+      return true
+    }
   })
 
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
@@ -69,3 +101,4 @@ app.on('window-all-closed', () => {
 
 registerWindowHandlers()
 registerEncryptionHandlers()
+registerLedgerHandlers()
