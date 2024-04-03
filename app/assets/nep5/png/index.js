@@ -52,6 +52,10 @@ import FLM from './FLM.png'
 import GM from './GM.png'
 import NEP from './NEP.png'
 import GFUND from './GFUND.png'
+import FRANK from './FRANK.png'
+import HD from './HD.png'
+import APE from './APE.png'
+import SCHRUTE from './SCHRUTE.png'
 
 export const imageMap = {
   NEO,
@@ -108,4 +112,8 @@ export const imageMap = {
   GM,
   NEP,
   GFUND,
+  FRANK,
+  HD,
+  APE,
+  SCHRUTE,
 }
