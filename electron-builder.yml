@@ -26,7 +26,7 @@ afterSign: electron-builder-notarize
 mac:
   hardenedRuntime: true
   entitlements: build/entitlements.mac.plist
-  entitlementsInherit: build/entitlements.mac.inherit.plist
+  entitlementsInherit: build/entitlements.mac.plist
   type: distribution
   target:
     target: default
@@ -36,6 +36,7 @@ mac:
     - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
     - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
     - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+    - ElectronTeamID: 5DRRKCU6DK
   notarize: false
 dmg:
   artifactName: ${name}-${version}.${ext}
