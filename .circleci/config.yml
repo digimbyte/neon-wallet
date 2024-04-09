@@ -78,6 +78,19 @@ jobs:
       size: "medium"
     steps:
       - checkout
+      - run:
+          name: Install NVM
+          command: choco install nvm -y
+      - run:
+          name: Install Node.js 16.20.2
+          shell: bash.exe
+          command:  |
+              nvm install 16.20.2
+              nvm use 16.20.2
+      - run:
+          name: Verify Node Version
+          shell: bash.exe
+          command: node --version
       - run: npm install --global --production windows-build-tools --vs2015
       - run: npm config set msvs_version 2015 -g
       - run: choco install windows-sdk-8.1
