@@ -117,5 +117,5 @@ export const imageMap = {
   HD,
   APE,
   SCHRUTE,
-  B$
+  B$,
 }
